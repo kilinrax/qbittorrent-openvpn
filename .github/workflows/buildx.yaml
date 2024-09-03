@@ -27,4 +27,4 @@ jobs:
           VERSION=$(cat VERSION)
           docker buildx build --push \
             --platform linux/amd64,linux/arm/v7,linux/arm64 \
-            --tag jovalle/qbittorrent-openvpn:${VERSION} .
+            --tag kilinrax/qbittorrent-openvpn:${VERSION} .
