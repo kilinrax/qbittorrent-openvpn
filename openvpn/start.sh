@@ -87,8 +87,10 @@ if [[ ${VPN_ENABLED} == "yes" ]]; then
 	fi
 
 	# set safe perms on openvpn credential file
-	chmod 600 /config/openvpn/credentials.conf
-	info "OpenVPN credentials file set to 644"
+	if [[ $(stat -c "%a" /config/openvpn/credentials.conf) != 600 ]]; then
+		chmod 600 /config/openvpn/credentials.conf
+		info "OpenVPN credentials file set to 600"
+	fi
 
 	# convert CRLF (windows) to LF (unix) for ovpn
 	/usr/bin/dos2unix ${VPN_CONFIG} 1> /dev/null
