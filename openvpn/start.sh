@@ -53,7 +53,7 @@ if [[ ${VPN_ENABLED} == "yes" ]]; then
 	set -e
 
 	if [[ ${exit_code_chown} != 0 || ${exit_code_chmod} != 0 ]]; then
-		warn "Unable to chown/chmod /config/openvpn/, assuming SMB mountpoint"
+		warn "Unable to chown/chmod to ${PUID}:${PGID} /config/openvpn/, assuming SMB mountpoint"
 	fi
 
 	# wildcard search for openvpn config files (match on first result)
