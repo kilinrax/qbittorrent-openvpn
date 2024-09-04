@@ -93,8 +93,10 @@ if [[ ${VPN_ENABLED} == "yes" ]]; then
 	fi
 
 	# convert CRLF (windows) to LF (unix) for ovpn
-	/usr/bin/dos2unix ${VPN_CONFIG} 1> /dev/null
-	info "Converted CRLF to LF for ovpn"
+	if [[ $(file ${VPN_CONFIG} | grep "CRLF") ]]; then
+		/usr/bin/dos2unix ${VPN_CONFIG} 1> /dev/null
+		info "Converted CRLF to LF for ovpn"
+	fi
 
 	# parse values from ovpn file
 	export vpn_remote_line=$(cat ${VPN_CONFIG} | grep -P -o -m 1 '(?<=^remote\s)[^\n\r]+' | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
