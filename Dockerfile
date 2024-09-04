@@ -1,5 +1,5 @@
 FROM debian
-LABEL maintainer="Jay Ovalle (jovalle) <jay.ovalle@gmail.com>"
+LABEL maintainer="Alex Bowley (kilinrax) <kilinrax@gmail.com>"
 LABEL version="$(cat VERSION)"
 
 VOLUME /downloads
@@ -28,6 +28,7 @@ RUN apt-get update && \
         kmod \
         moreutils \
         net-tools \
+        iproute2 \
         openvpn \
         procps \
         qbittorrent-nox \
