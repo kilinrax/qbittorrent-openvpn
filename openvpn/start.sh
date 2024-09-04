@@ -93,7 +93,7 @@ if [[ ${VPN_ENABLED} == "yes" ]]; then
 	fi
 
 	# convert CRLF (windows) to LF (unix) for ovpn
-	if [[ $(file ${VPN_CONFIG} | grep "CRLF") ]]; then
+	if [[ $(grep "" ${VPN_CONFIG}) ]]; then
 		/usr/bin/dos2unix ${VPN_CONFIG} 1> /dev/null
 		info "Converted CRLF to LF for ovpn"
 	fi
